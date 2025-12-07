@@ -1,0 +1,17 @@
+{
+  "appName": "مايسيس",
+  "appTitle": "مايسيس",
+  "signup": "إنشاء حساب",
+  "login": "تسجيل الدخول",
+  "helloUser": "مرحباً {name}",
+  "newOrder":"طلب جديد",
+  "visits":"الزيارات",
+  "customers":"العملاء",
+  "qoutation":"عرض سعر",
+  "casheir":"الصندوق",
+  "returnInvoice":"الأرجاع",
+  "warehouse":"المخزون",
+  "invoices":"الفواتير",
+  "settings":"الأعدادات",
+  "synchronization":"المزامنة"
+}
