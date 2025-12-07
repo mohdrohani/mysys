@@ -1,5 +1,3 @@
-
-
 var crossAxisCountGlobal = 2;
 int get crossAxisCountGlobalGetter => crossAxisCountGlobal;
 set crossAxisCountGlobalSetter(int value) => crossAxisCountGlobal = value;

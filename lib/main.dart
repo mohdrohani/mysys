@@ -62,13 +62,10 @@ class MyApp extends StatelessWidget {
         return AppLocalizations.of(context)!.appTitle;
       },*/
       
-
-      
-      
-      home: ResponsiveLayout(        
-        mobileScaffold: const MobileScaffold(),
-        tabletScaffold: const TabletScaffold(),
-        desktopScaffold: const DesktopScaffold(),
+      home: const ResponsiveLayout(        
+        mobileScaffold: MobileScaffold(),
+        tabletScaffold: TabletScaffold(),
+        desktopScaffold: DesktopScaffold(),
       ),
     );
   }

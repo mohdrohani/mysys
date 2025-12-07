@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "appName": "مايسيس",
   "appTitle": "مايسيس",
@@ -14,4 +15,22 @@
   "invoices":"الفواتير",
   "settings":"الأعدادات",
   "synchronization":"المزامنة"
+=======
+{
+  "appName": "مايسيس",
+  "appTitle": "مايسيس",
+  "signup": "إنشاء حساب",
+  "login": "تسجيل الدخول",
+  "helloUser": "مرحباً {name}",
+  "newOrder":"طلب جديد",
+  "visits":"الزيارات",
+  "customers":"العملاء",
+  "qoutation":"عرض سعر",
+  "casheir":"الصندوق",
+  "returnInvoice":"الأرجاع",
+  "warehouse":"المخزون",
+  "invoices":"الفواتير",
+  "settings":"الأعدادات",
+  "synchronization":"المزامنة"
+>>>>>>> 5cf8a95d1eac2264a08b64998f066a98f3f3e20e
 }
