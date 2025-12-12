@@ -1,3 +1,5 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -33,6 +35,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customers => 'Customers';
 
   @override
+  String get customer => 'Customer';
+
+  @override
   String get qoutation => 'Qoutation';
 
   @override
@@ -52,4 +57,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get synchronization => 'Synchronization';
+
+  @override
+  String get qrReadingText => 'Reading Product\'s QR';
+
+  @override
+  String get salesMan => 'Sales Man';
+
+  @override
+  String get addDiscount => 'Discount : Add Discount';
+
+  @override
+  String get saudiCurrancy => 'sar';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get payment => 'Pay';
+
+  @override
+  String get note => 'Note';
 }

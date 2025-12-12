@@ -7,8 +7,8 @@ var appBarColor= Colors.grey[900];
 bool isVisible = true;
 var menuItemSelected=false;
 var menuTileColor=Colors.white;
-final VoidCallback? myOnPressed = null;   
-final List<Color> myColors = const [
+const VoidCallback? myOnPressed = null;   
+const List<Color> myColors =[
   Color(0xFF79A2B4),
   Color(0xFFA6C0CD),
   Color.fromARGB(255, 20, 49, 61),
@@ -20,7 +20,7 @@ final List<Color> myColors = const [
   Color.fromARGB(255, 110, 174, 201),
   Color.fromARGB(255, 123, 123, 124),
 ];
-final List<Map<String, dynamic>> myItems = const [
+final List<Map<String, dynamic>> myItems =[
     {'image': CupertinoIcons.calendar_today, 'name': 'الزيارات'},
     {'image': CupertinoIcons.add_circled, 'name': 'طلب جديد'},
     {'image': CupertinoIcons.cart_badge_plus, 'name': 'عرض سعر'},
@@ -44,14 +44,14 @@ var myAppBar=AppBar(
           ),
           onPressed: () {
             isVisible = !isVisible;
-            print("isVisible: $isVisible");            
+            //print("isVisible: $isVisible");            
           },
         ),
-  iconTheme: IconThemeData(color: Colors.white),
+  iconTheme: const IconThemeData(color: Colors.white),
   backgroundColor:appBarColor,
   );
 class TabletScaffold extends StatefulWidget {
-  const TabletScaffold({Key? key}) : super(key: key);
+  const TabletScaffold({super.key});
   
   @override
   State<TabletScaffold> createState() => _TabletScaffoldState();  
@@ -86,7 +86,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
                   appBarColor=myColors[index % myColors.length];
                   myAppBar.backgroundColor;
                   });
-                  print("${item["name"]} tapped, menuItemSelected: $menuItemSelected, appBarColor: $appBarColor");
+                  //print("${item["name"]} tapped, menuItemSelected: $menuItemSelected, appBarColor: $appBarColor");
               },
             );
           },

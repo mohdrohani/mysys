@@ -1,0 +1,22 @@
+{
+  "appName": "MySys",
+  "appTitle": "MySystem",
+  "signup": "Sign Up",
+  "login": "Login",
+  "helloUser": "Hello {name}",
+  "@helloUser": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "newOrder":"New Order",
+  "visits":"Visits",
+  "customers":"Customers",
+  "qoutation":"Qoutation",
+  "casheir":"Casheir",
+  "returnInvoice":"Return Invoice",
+  "warehouse":"Warehouse",
+  "invoices":"Invoice",
+  "settings":"Settings",
+  "synchronization":"Synchronization"
+}

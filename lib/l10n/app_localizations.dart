@@ -143,6 +143,12 @@ abstract class AppLocalizations {
   /// **'Customers'**
   String get customers;
 
+  /// No description provided for @customer.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer'**
+  String get customer;
+
   /// No description provided for @qoutation.
   ///
   /// In en, this message translates to:
@@ -184,6 +190,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Synchronization'**
   String get synchronization;
+
+  /// No description provided for @qrReadingText.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Product\'s QR'**
+  String get qrReadingText;
+
+  /// No description provided for @salesMan.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales Man'**
+  String get salesMan;
+
+  /// No description provided for @addDiscount.
+  ///
+  /// In en, this message translates to:
+  /// **'Discount : Add Discount'**
+  String get addDiscount;
+
+  /// No description provided for @saudiCurrancy.
+  ///
+  /// In en, this message translates to:
+  /// **'sar'**
+  String get saudiCurrancy;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @payment.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay'**
+  String get payment;
+
+  /// No description provided for @note.
+  ///
+  /// In en, this message translates to:
+  /// **'Note'**
+  String get note;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

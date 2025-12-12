@@ -94,7 +94,7 @@ var myDrawer=Drawer(
           myAppBar=AppBar(                      
             backgroundColor:appBarColor,
           );
-          print("${item["name"]} tapped, menuItemSelected: $menuItemSelected, appBarColor: $appBarColor");
+          //print("${item["name"]} tapped, menuItemSelected: $menuItemSelected, appBarColor: $appBarColor");
         },
       );
     },

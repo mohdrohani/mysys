@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mysys/l10n/app_localizations.dart';
 import 'package:mysys/models/main_menu.dart';
 import 'package:mysys/data/myappsettings.dart';
+import '../models/textsection.dart';
+import '../models/titledcontainer.dart';
+import '../models/textfield.dart';
 
 final List<Color> colors=myColors;
 class Neworder extends StatelessWidget {
@@ -13,8 +16,11 @@ class Neworder extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: colors[selectedPageGlobalGetter],
         leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () 
+          {
+            Navigator.pop(context);
+          },
         ),
         title: Text(
           //AppLocalizations.of(context)!.newOrder+"S:${Localizations.localeOf(context).toString()}C:${Localizations.localeOf(context).countryCode}L:${Localizations.localeOf(context).languageCode}",
@@ -24,11 +30,8 @@ class Neworder extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () 
-            {
-              Navigator.pop(context);
-            },
+            icon: const Icon(Icons.menu),
+            onPressed: () {},
           ),
         ],
       ),
@@ -40,13 +43,23 @@ class Neworder extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child:Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(8),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.black54,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.qr_code, color: Colors.white),
+                            SizedBox(width: 8),
+                            Expanded(
+                              child: TextSection(description: AppLocalizations.of(context)!.qrReadingText,),
+                            ),
+                          ],
+                        ),
                       ),
-                      child: const Icon(Icons.search, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
                     Container(
@@ -58,26 +71,13 @@ class Neworder extends StatelessWidget {
                       child: const Icon(Icons.camera_alt, color: Colors.white),
                     ),
                     const SizedBox(width: 6),
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.black54,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Row(
-                          children: [
-                            Icon(Icons.qr_code, color: Colors.white),
-                            SizedBox(width: 8),
-                            Expanded(
-                              child: Text(
-                                "قراءة باركود المنتج",
-                                style: TextStyle(color: Colors.white70),
-                              ),
-                            ),
-                          ],
-                        ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(8),
                       ),
+                      child: const Icon(Icons.search, color: Colors.white),
                     ),
                   ],
                 ),
@@ -100,7 +100,15 @@ class Neworder extends StatelessWidget {
                     Row(
                       children: [
                         Expanded(
-                          child: Container(
+                          child: TitledContainer(
+                            title: AppLocalizations.of(context)!.customer,
+                            child: Text(
+                              "العملاء",
+                              style: TextStyle(
+                                color: Colors.white70, fontSize: 14),
+                            )
+                          ),
+                          /*Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: const Color(0xFF4A4A4A),
@@ -127,11 +135,19 @@ class Neworder extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          ),
+                          ),*/
                         ),
                         const SizedBox(width: 12),
                         Expanded(
-                          child: Container(
+                          child: TitledContainer(
+                            title: AppLocalizations.of(context)!.salesMan,
+                            child: Text(
+                              "المبيعات",
+                              style: TextStyle(
+                                color: Colors.white70, fontSize: 14),
+                            )
+                          ),
+                          /*Container(
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: const Color(0xFF4A4A4A),
@@ -158,33 +174,67 @@ class Neworder extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          ),
+                          ),*/
                         ),
                       ],
                     ),
                     const SizedBox(height: 20),
-                     const Row(
+                    Row(
                       children:[
-                        Expanded(
-                          child: Text("0.00 رس", style: TextStyle(color: Colors.white)),
+                        SizedBox(
+                          width:150,
+                          height: 30,
+                          child: Expanded(
+                            child: TextSection(description: AppLocalizations.of(context)!.addDiscount,textFontSize: 12.00,textColor:Colors.lightBlueAccent),                          
+                          ),
                         ),
-                        Expanded(
-                          child: Text("الخصم : إضافة خصم",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.lightBlueAccent)),
+                        //const SizedBox(width: 20),
+                        SizedBox(
+                          width:40,
+                          height: 30,
+                          child: Expanded(
+                            child: InputField(inputTextHolder: "0.00"),                          
+                          ),
+                        ),
+                        //const SizedBox(width: 20),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: SizedBox(
+                            width:40,
+                            height: 30,
+                            child: Expanded(
+                              child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 12.00,textColor: Colors.white),                          
+                            ),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 8),
-                    const Row(
+                    Row(
                       children:[
-                        Expanded(
-                          child: Text("0.00 رس", style: TextStyle(color: Colors.white)),
+                        SizedBox(
+                          width:150,
+                          height: 30,
+                          child: Expanded(
+                            child: TextSection(description: AppLocalizations.of(context)!.total,textFontSize: 12.00,textColor: Colors.lightGreenAccent),
+                          ),
                         ),
-                        Expanded(
-                          child: Text("الإجمالي:",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.lightGreenAccent)),
+                        SizedBox(
+                          width:40,
+                          height: 30,
+                          child: Expanded(
+                            child: InputField(inputTextHolder: "0.00"),                          
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: SizedBox(
+                            width:40,
+                            height: 30,
+                            child: Expanded(
+                              child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 12.00,textColor: Colors.white),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -198,10 +248,7 @@ class Neworder extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () {},
-                            child: const Text(
-                              "الدفع",
-                              style: TextStyle(fontSize: 16),
-                            ),
+                            child: TextSection(description: AppLocalizations.of(context)!.payment,textFontSize: 16),
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -212,10 +259,7 @@ class Neworder extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 14),
                             ),
                             onPressed: () {},
-                            child: const Text(
-                              "الملاحظة",
-                              style: TextStyle(fontSize: 16),
-                            ),
+                            child: TextSection(description: AppLocalizations.of(context)!.note,textFontSize: 16),
                           ),
                         ),
                       ],
