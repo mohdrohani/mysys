@@ -183,17 +183,17 @@ class Neworder extends StatelessWidget {
                       children:[
                         SizedBox(
                           width:150,
-                          height: 30,
+                          height: 20,
                           child: Expanded(
                             child: TextSection(description: AppLocalizations.of(context)!.addDiscount,textFontSize: 12.00,textColor:Colors.lightBlueAccent),                          
                           ),
                         ),
                         //const SizedBox(width: 20),
                         SizedBox(
-                          width:40,
-                          height: 30,
+                          width:50,
+                          height: 25,
                           child: Expanded(
-                            child: InputField(inputTextHolder: "0.00"),                          
+                            child: InputField(inputTextHolder: "0.00",focusedBorderColor: Colors.lightBlueAccent),                          
                           ),
                         ),
                         //const SizedBox(width: 20),
@@ -201,7 +201,7 @@ class Neworder extends StatelessWidget {
                           padding: const EdgeInsets.all(6.0),
                           child: SizedBox(
                             width:40,
-                            height: 30,
+                            height: 20,
                             child: Expanded(
                               child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 12.00,textColor: Colors.white),                          
                             ),
@@ -214,23 +214,23 @@ class Neworder extends StatelessWidget {
                       children:[
                         SizedBox(
                           width:150,
-                          height: 30,
+                          height: 20,
                           child: Expanded(
                             child: TextSection(description: AppLocalizations.of(context)!.total,textFontSize: 12.00,textColor: Colors.lightGreenAccent),
                           ),
                         ),
                         SizedBox(
-                          width:40,
-                          height: 30,
+                          width:50,
+                          height: 25,
                           child: Expanded(
-                            child: InputField(inputTextHolder: "0.00"),                          
+                            child: InputField(inputTextHolder: "0.00",focusedBorderColor: Colors.lightGreenAccent),                          
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: SizedBox(
                             width:40,
-                            height: 30,
+                            height: 20,
                             child: Expanded(
                               child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 12.00,textColor: Colors.white),
                             ),
