@@ -191,7 +191,7 @@ class Neworder extends StatelessWidget {
                         //const SizedBox(width: 20),
                         SizedBox(
                           width:50,
-                          height: 25,
+                          height: 20,
                           child: Expanded(
                             child: InputField(inputTextHolder: "0.00",focusedBorderColor: Colors.lightBlueAccent),                          
                           ),
@@ -221,7 +221,7 @@ class Neworder extends StatelessWidget {
                         ),
                         SizedBox(
                           width:50,
-                          height: 25,
+                          height: 20,
                           child: Expanded(
                             child: InputField(inputTextHolder: "0.00",focusedBorderColor: Colors.lightGreenAccent),                          
                           ),

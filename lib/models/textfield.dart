@@ -30,7 +30,7 @@ class InputField extends StatelessWidget{
         hintStyle: TextStyle(
           color: Colors.grey, // set your color here          
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 0,vertical: 5),     
+        contentPadding: EdgeInsets.symmetric(horizontal: 0,vertical: 0),     
         isDense: true, 
       ),
     );
