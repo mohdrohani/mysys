@@ -4,11 +4,16 @@ import 'package:flutter/foundation.dart'; // kIsWeb
 import 'package:mysys/l10n/app_localizations.dart';
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
+import 'package:provider/provider.dart';
+import 'package:mysys/models/theme_provider.dart';
 import 'package:mysys/responsive/mobile_scaffold.dart';
 import 'package:mysys/responsive/desktop_scaffold.dart';
 import 'package:mysys/responsive/responsive_layout.dart';
 import 'package:mysys/responsive/tablet_scaffold.dart';
+import 'package:mysys/data/myappsettings.dart';
+import 'package:mysys/models/theme.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
+
 //int selectedPageGlobal=0;
 //ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('en'));
 void main() async  {
@@ -33,7 +38,12 @@ void main() async  {
       await windowManager.focus();
     });
   }
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -41,9 +51,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {    
-    //const String appTitle = 'Flutter layout demo';
+    
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    
+    themeProviderGlobal=themeProvider;
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: themeProviderGlobal.themeMode, // <-- controlled by provider
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,     
       
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       

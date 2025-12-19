@@ -4,12 +4,14 @@ class TextSection extends StatelessWidget {
   final String description;
   final double textFontSize;
   final Color textColor;
+  final FontWeight textFontWeight;
   
   const TextSection({
     super.key,
     required this.description,
     this.textFontSize=12,
-    this.textColor=Colors.white70
+    this.textColor=Colors.white70,
+    this.textFontWeight=FontWeight.normal,
   });  
 
   @override
@@ -21,7 +23,7 @@ class TextSection extends StatelessWidget {
     return Text(
       description, 
       softWrap: false,
-      style: TextStyle(fontSize: textFontSize,color: textColor),
+      style: TextStyle(fontSize: textFontSize,color: textColor,fontWeight: textFontWeight),
     );
   }
 }

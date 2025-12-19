@@ -30,7 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
+  provider: ^6.1.5
+  fluttertoast: ^8.2.14
   flutter_localizations:        # <-- ADD THIS
     sdk: flutter
   # The following adds the Cupertino Icons font to your application.
