@@ -172,7 +172,7 @@ class Neworder extends StatelessWidget {
                     child: SizedBox(
                       width:150,
                       height: 20,
-                      child: TextSection(description: AppLocalizations.of(context)!.addDiscount,textFontSize: 14.00,textColor:allcolors.secondaryContainer,textFontWeight: FontWeight.bold),                          
+                      child: TextSection(description: AppLocalizations.of(context)!.addDiscount,textFontSize: 14.00,textColor:allcolors.secondaryContainer,textFontWeight: FontWeight.w800),                          
                     ),
                   ),
                   SizedBox(
@@ -205,7 +205,7 @@ class Neworder extends StatelessWidget {
                     child: SizedBox(
                       width:150,
                       height: 20,
-                      child: TextSection(description: AppLocalizations.of(context)!.total,textFontSize: 14.00,textColor: allcolors.secondaryContainer,textFontWeight: FontWeight.bold),
+                      child: TextSection(description: AppLocalizations.of(context)!.total,textFontSize: 14.00,textColor: allcolors.secondaryContainer,textFontWeight: FontWeight.w800),
                     ),
                   ),
                   SizedBox(
@@ -244,7 +244,7 @@ class Neworder extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10), // Change the curve here
                         ),
                       ),
-                      child: TextSection(description: AppLocalizations.of(context)!.payment,textFontSize: 16,textColor:allcolors.onTertiary,textFontWeight: FontWeight.bold),
+                      child: TextSection(description: AppLocalizations.of(context)!.payment,textFontSize: 16,textColor:allcolors.onTertiary,textFontWeight: FontWeight.w800),
                       onPressed: () {},                            
                     ),
                   ),
@@ -258,7 +258,7 @@ class Neworder extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10), // Change the curve here
                         ),
                       ),
-                      child: TextSection(description: AppLocalizations.of(context)!.note,textFontSize: 16,textColor:allcolors.onTertiary,textFontWeight: FontWeight.bold),
+                      child: TextSection(description: AppLocalizations.of(context)!.note,textFontSize: 16,textColor:allcolors.onTertiary,textFontWeight: FontWeight.w800),
                       onPressed: () {},                            
                     ),
                   ),
