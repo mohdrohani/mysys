@@ -232,6 +232,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Note'**
   String get note;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @langSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Language Settings'**
+  String get langSettings;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
+  /// No description provided for @changeLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Language:'**
+  String get changeLanguage;
+
+  /// No description provided for @searchLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Language...'**
+  String get searchLanguage;
+
+  /// No description provided for @themeSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme Settings'**
+  String get themeSettings;
+
+  /// No description provided for @changeTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Theme:'**
+  String get changeTheme;
+
+  /// No description provided for @searchTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Theme...'**
+  String get searchTheme;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

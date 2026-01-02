@@ -26,5 +26,15 @@
   "saudiCurrancy":"sar",
   "total":"Total",
   "payment":"Pay",
-  "note":"Note"
+  "note":"Note",
+  "settingsTitle":"Settings",
+  "langSettings":"Language Settings",
+  "language":"Language",
+  "english":"English",
+  "arabic":"Arabic",
+  "changeLanguage":"Change Language:",
+  "searchLanguage":"Search Language...",
+  "themeSettings":"Theme Settings",
+  "changeTheme":"Change Theme:",
+  "searchTheme":"Search Theme..."
 }

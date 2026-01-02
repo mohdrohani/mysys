@@ -5,19 +5,24 @@ import 'package:mysys/l10n/app_localizations.dart';
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:provider/provider.dart';
-import 'package:mysys/models/theme_provider.dart';
+import 'package:mysys/theme/theme_provider.dart';
 import 'package:mysys/responsive/mobile_scaffold.dart';
 import 'package:mysys/responsive/desktop_scaffold.dart';
 import 'package:mysys/responsive/responsive_layout.dart';
 import 'package:mysys/responsive/tablet_scaffold.dart';
 import 'package:mysys/data/myappsettings.dart';
-import 'package:mysys/models/theme.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mysys/data/app_lifecycle_observer.dart';
+
 //import 'package:fluttertoast/fluttertoast.dart';
 
 //int selectedPageGlobal=0;
 //ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('en'));
 void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
+  final localeProvider = ThemeProvider(); 
+  themeProviderGlobal = localeProvider; 
+
   if (!kIsWeb &&
   (defaultTargetPlatform == TargetPlatform.windows || 
   defaultTargetPlatform == TargetPlatform.linux || 
@@ -40,39 +45,65 @@ void main() async  {
   }
   runApp(
     ChangeNotifierProvider(
-      create: (_) => ThemeProvider(),
+      create: (_) =>  localeProvider,
       child: const MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+   @override
+  State<MyApp> createState() => _MyAppState();
+}
+  
+class _MyAppState extends State<MyApp> {
+  late AppLocaleObserver _observer;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _observer = AppLocaleObserver(context);
+    WidgetsBinding.instance.addObserver(_observer);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(_observer);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {    
-    
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    
+    final themeProvider = context.watch<ThemeProvider>();    
     themeProviderGlobal=themeProvider;
-    
+    Locale systemLang = WidgetsBinding.instance.platformDispatcher.locale;
+    systemLangGlobal=systemLang.languageCode;
+    langListGlobalSetter = AppLocalizations.supportedLocales;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      locale:themeProvider.locale,
       themeMode: themeProviderGlobal.themeMode, // <-- controlled by provider
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,     
+      theme: themeProvider.theme,
+      darkTheme: themeProvider.theme,     
       
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       
       supportedLocales: AppLocalizations.supportedLocales,
       
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale?.languageCode) {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
+      localeResolutionCallback: (deviceLocale, supportedLocales) {
+        themeProvider.updateFromSystem(
+          deviceLocale ?? supportedLocales.first,
+        );
+
+         return themeProvider.locale ??
+            supportedLocales.first;
       },
       
       /*onGenerateTitle: (context) {
@@ -84,6 +115,6 @@ class MyApp extends StatelessWidget {
         tabletScaffold: TabletScaffold(),
         desktopScaffold: DesktopScaffold(),
       ),
-    );
+    );    
   }
 }

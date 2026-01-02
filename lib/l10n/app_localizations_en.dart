@@ -78,4 +78,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get note => 'Note';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get langSettings => 'Language Settings';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get changeLanguage => 'Change Language:';
+
+  @override
+  String get searchLanguage => 'Search Language...';
+
+  @override
+  String get themeSettings => 'Theme Settings';
+
+  @override
+  String get changeTheme => 'Change Theme:';
+
+  @override
+  String get searchTheme => 'Search Theme...';
 }

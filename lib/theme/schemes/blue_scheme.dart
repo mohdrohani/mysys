@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-const lightColorScheme = ColorScheme(
+class BlueScheme {
+static const ColorScheme light = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xff00677f),
   surfaceTint: Color(0xff00677f),
@@ -47,8 +48,7 @@ const lightColorScheme = ColorScheme(
   surfaceContainerHigh: Color(0xffe4e9eb),
   surfaceContainerHighest: Color(0xffdfe3e6),
 );
-
-const darkColorScheme = ColorScheme(
+static const ColorScheme dark = ColorScheme(
   brightness: Brightness.dark,
   primary: Color(0xff65d4f8),
   surfaceTint: Color(0xff65d4f8),
@@ -96,17 +96,5 @@ const darkColorScheme = ColorScheme(
   surfaceContainerHigh: Color(0xff262b2d),
   surfaceContainerHighest: Color(0xff303638),
 );
-
-class AppTheme {
-  AppTheme._();
-
-  static ThemeData light = ThemeData(
-    useMaterial3: true,
-    colorScheme: lightColorScheme,
-  );
-
-  static ThemeData dark = ThemeData(
-    useMaterial3: true,
-    colorScheme: darkColorScheme,
-  );
 }
+

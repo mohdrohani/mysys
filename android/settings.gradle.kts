@@ -24,3 +24,10 @@ plugins {
 }
 
 include(":app")
+gradle.projectsLoaded {
+    allprojects {
+        project.tasks.withType<AbstractCompile> {
+            outputs.cacheIf { false }
+        }
+    }
+}

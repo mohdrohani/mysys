@@ -78,4 +78,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get note => 'الملاحظة';
+
+  @override
+  String get settingsTitle => 'الأعدادات';
+
+  @override
+  String get langSettings => 'إعدادات اللغة';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الإنجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get changeLanguage => 'تغيير اللغة:';
+
+  @override
+  String get searchLanguage => 'ابحث عن لغة...';
+
+  @override
+  String get themeSettings => 'إعدادات المظهر';
+
+  @override
+  String get changeTheme => 'تغيير المظهر:';
+
+  @override
+  String get searchTheme => 'ابحث عن مظهر...';
 }

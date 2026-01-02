@@ -26,5 +26,15 @@
   "saudiCurrancy":"رس",
   "total":"الإجمالي",
   "payment":"الدفع",
-  "note":"الملاحظة"
+  "note":"الملاحظة",
+  "settingsTitle":"الأعدادات",
+  "langSettings":"إعدادات اللغة",
+  "language":"اللغة",
+  "english":"الإنجليزية",
+  "arabic":"العربية",
+  "changeLanguage":"تغيير اللغة:",
+  "searchLanguage":"ابحث عن لغة...",
+  "themeSettings":"إعدادات المظهر",
+  "changeTheme":"تغيير المظهر:",
+  "searchTheme":"ابحث عن مظهر..."
 }

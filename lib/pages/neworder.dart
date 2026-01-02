@@ -4,7 +4,7 @@ import 'package:mysys/models/main_menu.dart';
 import 'package:mysys/data/myappsettings.dart';
 import '../models/textsection.dart';
 import '../models/titledcontainer.dart';
-import "../models/theme_provider.dart";
+import "../theme/theme_provider.dart";
 import 'package:provider/provider.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
 
@@ -16,6 +16,7 @@ class Neworder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {    
+    //final allcolors = Theme.of(context).colorScheme;
     final allcolors = Theme.of(context).colorScheme;
     themeProviderGlobal = context.watch<ThemeProvider>();
     
@@ -30,13 +31,14 @@ class Neworder extends StatelessWidget {
     return Scaffold(      
       backgroundColor: allcolors.primary,
       appBar: AppBar(
-        backgroundColor: allcolors.secondaryContainer,
+        backgroundColor: allcolors.primary,
+        centerTitle: true,
         iconTheme: IconThemeData(
-          color: allcolors.onSecondaryContainer,
+          color: allcolors.onPrimary,
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          color:allcolors.onSecondaryContainer,
+          color:allcolors.onPrimary,
           onPressed: () 
           {
             Navigator.pop(context);
@@ -45,9 +47,9 @@ class Neworder extends StatelessWidget {
         title: Text(
           //AppLocalizations.of(context)!.newOrder+"S:${Localizations.localeOf(context).toString()}C:${Localizations.localeOf(context).countryCode}L:${Localizations.localeOf(context).languageCode}",
           AppLocalizations.of(context)!.newOrder,
-          style: TextStyle(fontWeight: FontWeight.bold,color: allcolors.onSecondaryContainer),
+          style: TextStyle(fontWeight: FontWeight.bold,color: allcolors.onPrimary),
         ),
-        centerTitle: true,
+        
         actions: [
           IconButton(
             icon: Icon(
@@ -55,10 +57,10 @@ class Neworder extends StatelessWidget {
               ? Icons.dark_mode
               : Icons.light_mode,
             ),
-            color: allcolors.onSecondaryContainer,
-            onPressed: () {              
-              themeProviderGlobal = context.read<ThemeProvider>();
-              themeProviderGlobal.toggleTheme();              
+            color: allcolors.onPrimary,
+            onPressed: () {   
+              themeProviderGlobal = context.read<ThemeProvider>();             
+              themeProviderGlobal.toggleMode();                            
             },
           ),
         ],
@@ -119,7 +121,7 @@ class Neworder extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: allcolors.secondary,
+            color: allcolors.primaryContainer,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30),
               topRight: Radius.circular(30),
@@ -136,13 +138,13 @@ class Neworder extends StatelessWidget {
                     child: Center(
                       child: TitledContainer(
                         title: AppLocalizations.of(context)!.customer,
-                        titleBackgroundColor: allcolors.secondary,
-                        titleColor: allcolors.secondaryContainer,
-                        borderColor: allcolors.secondaryContainer,
+                        titleBackgroundColor: allcolors.primaryContainer,
+                        titleColor: allcolors.onPrimaryContainer,
+                        borderColor: allcolors.onPrimaryContainer,
                         child: Text(
                           "العملاء",
                           style: TextStyle(
-                            color: allcolors.secondaryFixed, fontSize: 14),
+                            color: allcolors.onPrimaryContainer, fontSize: 14),
                         )
                       ),
                     ),
@@ -152,13 +154,13 @@ class Neworder extends StatelessWidget {
                     child: Center(
                       child: TitledContainer(
                         title: AppLocalizations.of(context)!.salesMan,
-                        titleBackgroundColor: allcolors.secondary,
-                        titleColor: allcolors.secondaryContainer,
-                        borderColor: allcolors.secondaryContainer,
+                        titleBackgroundColor: allcolors.primaryContainer,
+                        titleColor: allcolors.onPrimaryContainer,
+                        borderColor: allcolors.onPrimaryContainer,
                         child: Text(
                           "المبيعات",
                           style: TextStyle(
-                            color:allcolors.secondaryFixed, fontSize: 14),
+                            color:allcolors.onPrimaryContainer, fontSize: 14),
                         )
                       ),
                     ),
@@ -172,7 +174,7 @@ class Neworder extends StatelessWidget {
                     child: SizedBox(
                       width:150,
                       height: 20,
-                      child: TextSection(description: AppLocalizations.of(context)!.addDiscount,textFontSize: 14.00,textColor:allcolors.secondaryContainer,textFontWeight: FontWeight.w800),                          
+                      child: TextSection(description: AppLocalizations.of(context)!.addDiscount,textFontSize: 14.00,textColor:allcolors.onPrimaryContainer,textFontWeight: FontWeight.w800),                          
                     ),
                   ),
                   SizedBox(
@@ -181,9 +183,14 @@ class Neworder extends StatelessWidget {
                     child: TextFormField(
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: allcolors.onPrimaryContainer)
+                          ),
+
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: allcolors.secondaryContainer)
+                            color: allcolors.tertiary)
                           )
                         )
                     ),   
@@ -193,7 +200,7 @@ class Neworder extends StatelessWidget {
                     child: SizedBox(
                       width:40,
                       height: 20,
-                      child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 14.00,textColor: allcolors.secondaryContainer),                          
+                      child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 14.00,textColor: allcolors.onPrimaryContainer,textFontWeight: FontWeight.w800),                          
                     ),
                   ),
                 ],
@@ -205,7 +212,7 @@ class Neworder extends StatelessWidget {
                     child: SizedBox(
                       width:150,
                       height: 20,
-                      child: TextSection(description: AppLocalizations.of(context)!.total,textFontSize: 14.00,textColor: allcolors.secondaryContainer,textFontWeight: FontWeight.w800),
+                      child: TextSection(description: AppLocalizations.of(context)!.total,textFontSize: 14.00,textColor: allcolors.onPrimaryContainer,textFontWeight: FontWeight.w800),
                     ),
                   ),
                   SizedBox(
@@ -214,9 +221,14 @@ class Neworder extends StatelessWidget {
                     child: TextFormField(
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: allcolors.onPrimaryContainer)
+                          ),
+
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                            color: allcolors.secondaryContainer)
+                            color: allcolors.tertiary)
                           )
                         )
                     ),                    
@@ -226,7 +238,7 @@ class Neworder extends StatelessWidget {
                     child: SizedBox(
                       width:40,
                       height: 20,
-                      child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 14.00,textColor: allcolors.secondaryContainer),
+                      child: TextSection(description: AppLocalizations.of(context)!.saudiCurrancy,textFontSize: 14.00,textColor: allcolors.onPrimaryContainer,textFontWeight: FontWeight.w800),
                     ),
                   ),
                 ],
@@ -238,13 +250,13 @@ class Neworder extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: allcolors.tertiary,
+                        backgroundColor: allcolors.secondary,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10), // Change the curve here
                         ),
                       ),
-                      child: TextSection(description: AppLocalizations.of(context)!.payment,textFontSize: 16,textColor:allcolors.onTertiary,textFontWeight: FontWeight.w800),
+                      child: TextSection(description: AppLocalizations.of(context)!.payment,textFontSize: 16,textColor:allcolors.onSecondary,textFontWeight: FontWeight.w800),
                       onPressed: () {},                            
                     ),
                   ),
@@ -252,13 +264,13 @@ class Neworder extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: allcolors.tertiary,
+                        backgroundColor: allcolors.secondary,
                         padding: const EdgeInsets.symmetric(vertical: 14),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10), // Change the curve here
                         ),
                       ),
-                      child: TextSection(description: AppLocalizations.of(context)!.note,textFontSize: 16,textColor:allcolors.onTertiary,textFontWeight: FontWeight.w800),
+                      child: TextSection(description: AppLocalizations.of(context)!.note,textFontSize: 16,textColor:allcolors.onSecondary,textFontWeight: FontWeight.w800),
                       onPressed: () {},                            
                     ),
                   ),
