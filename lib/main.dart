@@ -13,6 +13,7 @@ import 'package:mysys/responsive/tablet_scaffold.dart';
 import 'package:mysys/data/myappsettings.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mysys/data/app_lifecycle_observer.dart';
+import 'package:mysys/database/app_database.dart';
 
 //import 'package:fluttertoast/fluttertoast.dart';
 
@@ -42,6 +43,8 @@ void main() async  {
       await windowManager.show();
       await windowManager.focus();
     });
+
+    await AppDatabase().database;
   }
   runApp(
     ChangeNotifierProvider(

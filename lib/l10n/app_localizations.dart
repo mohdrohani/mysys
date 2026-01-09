@@ -149,6 +149,126 @@ abstract class AppLocalizations {
   /// **'Customer'**
   String get customer;
 
+  /// No description provided for @addCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Customer'**
+  String get addCustomer;
+
+  /// No description provided for @saveCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Customer'**
+  String get saveCustomer;
+
+  /// No description provided for @searchCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Customer...'**
+  String get searchCustomer;
+
+  /// No description provided for @basicInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Basic Information'**
+  String get basicInfo;
+
+  /// No description provided for @customerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Name'**
+  String get customerName;
+
+  /// No description provided for @customerCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Code'**
+  String get customerCode;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @taxNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Tax Number'**
+  String get taxNumber;
+
+  /// No description provided for @financial.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial'**
+  String get financial;
+
+  /// No description provided for @creditLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Credit Limit'**
+  String get creditLimit;
+
+  /// No description provided for @active.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @addressStreet.
+  ///
+  /// In en, this message translates to:
+  /// **'Street'**
+  String get addressStreet;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @country.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get country;
+
+  /// No description provided for @contactName.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Name'**
+  String get contactName;
+
+  /// No description provided for @contactPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Person'**
+  String get contactPerson;
+
+  /// No description provided for @noCustomersFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Customers Found'**
+  String get noCustomersFound;
+
+  /// No description provided for @custSavedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Saved Successfully'**
+  String get custSavedMsg;
+
   /// No description provided for @qoutation.
   ///
   /// In en, this message translates to:
@@ -158,7 +278,7 @@ abstract class AppLocalizations {
   /// No description provided for @casheir.
   ///
   /// In en, this message translates to:
-  /// **'Casheir'**
+  /// **'Starting Cash'**
   String get casheir;
 
   /// No description provided for @returnInvoice.
@@ -292,6 +412,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Search Theme...'**
   String get searchTheme;
+
+  /// No description provided for @appDatabase.
+  ///
+  /// In en, this message translates to:
+  /// **'Database Settings'**
+  String get appDatabase;
+
+  /// No description provided for @appTables.
+  ///
+  /// In en, this message translates to:
+  /// **'Database Tables:'**
+  String get appTables;
+
+  /// No description provided for @appLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Database Location:'**
+  String get appLocation;
+
+  /// No description provided for @myBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get myBlue;
+
+  /// No description provided for @myGreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Green'**
+  String get myGreen;
+
+  /// No description provided for @myYellow.
+  ///
+  /// In en, this message translates to:
+  /// **'Yellow'**
+  String get myYellow;
+
+  /// No description provided for @myPink.
+  ///
+  /// In en, this message translates to:
+  /// **'Pink'**
+  String get myPink;
+
+  /// No description provided for @myNavy.
+  ///
+  /// In en, this message translates to:
+  /// **'Navy'**
+  String get myNavy;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @selectTable.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a Table'**
+  String get selectTable;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -38,10 +38,70 @@ class AppLocalizationsAr extends AppLocalizations {
   String get customer => 'العميل';
 
   @override
+  String get addCustomer => 'إضافة عميل';
+
+  @override
+  String get saveCustomer => 'حفظ العميل';
+
+  @override
+  String get searchCustomer => 'ابحث عن عميل...';
+
+  @override
+  String get basicInfo => 'المعلومات الأساسية';
+
+  @override
+  String get customerName => 'اسم العميل';
+
+  @override
+  String get customerCode => 'كود العميل';
+
+  @override
+  String get phone => 'الهاتف';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get taxNumber => 'الرقم الضريبي';
+
+  @override
+  String get financial => 'المالية';
+
+  @override
+  String get creditLimit => 'الحد الائتماني';
+
+  @override
+  String get active => 'نشط';
+
+  @override
+  String get address => 'العنوان';
+
+  @override
+  String get addressStreet => 'الشارع';
+
+  @override
+  String get city => 'المدينة';
+
+  @override
+  String get country => 'البلد';
+
+  @override
+  String get contactName => 'اسم جهة الاتصال';
+
+  @override
+  String get contactPerson => 'أسم الموظف';
+
+  @override
+  String get noCustomersFound => 'لم يتم العثور على عملاء';
+
+  @override
+  String get custSavedMsg => 'تم حفظ العميل بنجاح';
+
+  @override
   String get qoutation => 'عرض سعر';
 
   @override
-  String get casheir => 'الصندوق';
+  String get casheir => 'رصيد الدرج';
 
   @override
   String get returnInvoice => 'الأرجاع';
@@ -108,4 +168,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get searchTheme => 'ابحث عن مظهر...';
+
+  @override
+  String get appDatabase => 'إعدادات قاعدة البيانات';
+
+  @override
+  String get appTables => 'جداول قاعدة البيانات:';
+
+  @override
+  String get appLocation => 'مسار قاعدة البيانات:';
+
+  @override
+  String get myBlue => 'أزرق';
+
+  @override
+  String get myGreen => 'أخضر';
+
+  @override
+  String get myYellow => 'أصفر';
+
+  @override
+  String get myPink => 'وردي';
+
+  @override
+  String get myNavy => 'كحلي';
+
+  @override
+  String get loading => 'جار التحميل...';
+
+  @override
+  String get selectTable => 'اختر جدولاً';
 }

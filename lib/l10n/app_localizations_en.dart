@@ -38,10 +38,70 @@ class AppLocalizationsEn extends AppLocalizations {
   String get customer => 'Customer';
 
   @override
+  String get addCustomer => 'Add Customer';
+
+  @override
+  String get saveCustomer => 'Save Customer';
+
+  @override
+  String get searchCustomer => 'Search Customer...';
+
+  @override
+  String get basicInfo => 'Basic Information';
+
+  @override
+  String get customerName => 'Customer Name';
+
+  @override
+  String get customerCode => 'Customer Code';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get taxNumber => 'Tax Number';
+
+  @override
+  String get financial => 'Financial';
+
+  @override
+  String get creditLimit => 'Credit Limit';
+
+  @override
+  String get active => 'Active';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get addressStreet => 'Street';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get country => 'Country';
+
+  @override
+  String get contactName => 'Contact Name';
+
+  @override
+  String get contactPerson => 'Contact Person';
+
+  @override
+  String get noCustomersFound => 'No Customers Found';
+
+  @override
+  String get custSavedMsg => 'Customer Saved Successfully';
+
+  @override
   String get qoutation => 'Qoutation';
 
   @override
-  String get casheir => 'Casheir';
+  String get casheir => 'Starting Cash';
 
   @override
   String get returnInvoice => 'Return Invoice';
@@ -108,4 +168,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get searchTheme => 'Search Theme...';
+
+  @override
+  String get appDatabase => 'Database Settings';
+
+  @override
+  String get appTables => 'Database Tables:';
+
+  @override
+  String get appLocation => 'Database Location:';
+
+  @override
+  String get myBlue => 'Blue';
+
+  @override
+  String get myGreen => 'Green';
+
+  @override
+  String get myYellow => 'Yellow';
+
+  @override
+  String get myPink => 'Pink';
+
+  @override
+  String get myNavy => 'Navy';
+
+  @override
+  String get loading => 'Loading...';
+
+  @override
+  String get selectTable => 'Select a Table';
 }

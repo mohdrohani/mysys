@@ -52,8 +52,8 @@ class _MobileScaffoldState extends State<MobileScaffold> {
         child:GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: cax, // Number of columns in the grid
-            crossAxisSpacing: 10, // Spacing between columns
-            mainAxisSpacing: 10, // Spacing between rows
+            crossAxisSpacing: 5, // Spacing between columns
+            mainAxisSpacing: 5, // Spacing between rows
             childAspectRatio: 1.0, // Aspect ratio of each grid item
           ),
           itemCount: items.length, // Total number of items (10)
@@ -74,14 +74,14 @@ class _MobileScaffoldState extends State<MobileScaffold> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(2.0),
                       child: Text(
                         myItemsName[index]["name"]!,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 248, 247, 247),
-                          fontSize: 18,
+                          fontSize: 16,
                         ),
                       ),
                     ),
