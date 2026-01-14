@@ -144,9 +144,37 @@ class _CustomersState extends State<Customers> {
                       onTap: () async {
                         final phoneNumber = customer['phone'];
                         final uri = Uri(scheme: 'tel', path: phoneNumber);
-                        if (await canLaunchUrl(uri)) {
-                          await launchUrl(uri);
-                        }
+                        try {
+        final canLaunch = await canLaunchUrl(uri);
+        if (canLaunch) {
+          await launchUrl(uri);
+        } else {
+          // On iPad or devices without phone capability
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  '${AppLocalizations.of(context)!.phone}: $phoneNumber',
+                ),
+                action: SnackBarAction(
+                  label: "Copy" ?? 'Copy',
+                  onPressed: () {
+                    // Copy to clipboard if needed
+                  },
+                ),
+              ),
+            );
+          }
+        }
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('${AppLocalizations.of(context)!.phone}: $phoneNumber'),
+            ),
+          );
+        }
+      }
                       },
                       child: Row(
                         children: [

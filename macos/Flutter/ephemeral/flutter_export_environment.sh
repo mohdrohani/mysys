@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\flutter"
-export "FLUTTER_APPLICATION_PATH=D:\FlutterProj\mysys"
+export "FLUTTER_ROOT=/Users/mac/flutter"
+export "FLUTTER_APPLICATION_PATH=/Users/mac/Documents/flutterProj/mysys"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
 export "FLUTTER_BUILD_NAME=1.0.0"

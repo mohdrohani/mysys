@@ -35,7 +35,7 @@ class ResponsiveLayout extends StatelessWidget {
         else if(width < 1100)
         {
           //cax=2;
-          return tabletScaffold;
+          return mobileScaffold;
         }
         else{
           return desktopScaffold;
