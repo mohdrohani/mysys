@@ -38,10 +38,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get customer => 'العميل';
 
   @override
+  String get viewEditCustomer => 'بيانات العميل أو التعديل';
+
+  @override
   String get addCustomer => 'إضافة عميل';
 
   @override
   String get saveCustomer => 'حفظ العميل';
+
+  @override
+  String get updateCustomer => 'تحديث العميل';
 
   @override
   String get searchCustomer => 'ابحث عن عميل...';
@@ -53,7 +59,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get customerName => 'اسم العميل';
 
   @override
+  String get customerName2 => 'اسم العميل بالأجنبي';
+
+  @override
   String get customerCode => 'كود العميل';
+
+  @override
+  String get customerLocation => 'موقع العميل';
 
   @override
   String get phone => 'الهاتف';
@@ -65,6 +77,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get taxNumber => 'الرقم الضريبي';
 
   @override
+  String get notes => 'ملاحظات';
+
+  @override
   String get financial => 'المالية';
 
   @override
@@ -74,6 +89,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get active => 'نشط';
 
   @override
+  String get inactive => 'غير نشط';
+
+  @override
   String get address => 'العنوان';
 
   @override
@@ -81,6 +99,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get city => 'المدينة';
+
+  @override
+  String get state => '/الأمارة/المنطقة/الولاية';
 
   @override
   String get country => 'البلد';
@@ -95,7 +116,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noCustomersFound => 'لم يتم العثور على عملاء';
 
   @override
+  String get noCustomerAdded => 'لم يتم إضافة أي عميل بعد';
+
+  @override
+  String get noPhoneFound => 'لم يتم العثور على أرقام هواتف';
+
+  @override
   String get custSavedMsg => 'تم حفظ العميل بنجاح';
+
+  @override
+  String get copy => 'نسخ';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get tapToEdit => 'انقر هنا للتعديل';
+
+  @override
+  String get mapAddress => 'العنوان بأستخدام الخرائط المجانية';
 
   @override
   String get qoutation => 'عرض سعر';
@@ -117,6 +156,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get synchronization => 'المزامنة';
+
+  @override
+  String get products => 'المنتجات';
+
+  @override
+  String get nodbtables => 'لا يوجد جداول في قاعدة البيانات';
 
   @override
   String get qrReadingText => 'قراءة باركود المنتج';
@@ -198,4 +243,115 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get selectTable => 'اختر جدولاً';
+
+  @override
+  String get mainwarehouse => 'المخزن الرئيسي';
+
+  @override
+  String get mainwarehouselocation => 'الموقع الرئيسي';
+
+  @override
+  String get addProduct => 'إضافة منتج';
+
+  @override
+  String get viewEditProduct => 'عرض وتعديل المنتج';
+
+  @override
+  String get productName => 'اسم المنتج';
+
+  @override
+  String get productName2 => 'اسم المنتج بالأجنبي';
+
+  @override
+  String get sku => 'كود المنتج';
+
+  @override
+  String get costPrice => 'سعر التكلفة (0.00)';
+
+  @override
+  String get sellingPrice => 'سعر البيع (0.00)';
+
+  @override
+  String get productVat => 'ضريبة المنتج (%)';
+
+  @override
+  String get totalWithTaxPrice => 'الإجمالي مع الضريبة (%)';
+
+  @override
+  String get warehouses => 'المخازن';
+
+  @override
+  String get selectWarehouse => 'اختر مخزناً';
+
+  @override
+  String get options => 'الخيارات';
+
+  @override
+  String get hasVariants => 'يحتوي على متغيرات';
+
+  @override
+  String get variants => 'المتغيرات';
+
+  @override
+  String get addVariant => 'إضافة متغير';
+
+  @override
+  String get variantName => 'اسم المتغير';
+
+  @override
+  String get variantValue => 'قيمة المتغير';
+
+  @override
+  String get remove => 'إزالة';
+
+  @override
+  String get productSavedMsg => 'تم حفظ المنتج بنجاح';
+
+  @override
+  String get saveProduct => 'حفظ المنتج';
+
+  @override
+  String get updateProduct => 'تحديث المنتج';
+
+  @override
+  String get warehouseSavedMsg => 'تم حفظ المخزن بنجاح';
+
+  @override
+  String get addWarehouse => 'أضافة مخزن';
+
+  @override
+  String get saveWarehouse => 'حفظ المخزن';
+
+  @override
+  String get warehouseName => 'اسم المخزن';
+
+  @override
+  String get warehouseLocation => 'موقع المخزن';
+
+  @override
+  String get warehouseInfo => 'معلومات المخزن';
+
+  @override
+  String get inventory => 'المخزون';
+
+  @override
+  String get openingStock => 'الرصيد الافتتاحي (>=0)';
+
+  @override
+  String get searchProduct => 'ابحث عن منتج...';
+
+  @override
+  String get noProductsFound => 'لم يتم العثور على أي منتجات';
+
+  @override
+  String get noProductAdded => 'لم يتم إضافة أي منتج';
+
+  @override
+  String get noCostPriceFound => 'لم يتم العثور على سعر التكلفة';
+
+  @override
+  String get barcodeText => 'الباركود';
+
+  @override
+  String get barcodeTitle => 'مسح باركود المنتج';
 }

@@ -1,59 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:mysys/pages/addproduct.dart';
+import 'package:mysys/database/app_database.dart';
 import 'package:mysys/l10n/app_localizations.dart';
-//import 'package:mysys/models/main_menu.dart';
-import 'package:mysys/data/myappsettings.dart';
-//import '../models/textsection.dart';
-//import '../models/titledcontainer.dart';
 import "../theme/theme_provider.dart";
 import 'package:provider/provider.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
-//import 'package:dropdown_button2/dropdown_button2.dart';
-//import 'package:mysys/theme/app_color_scheme.dart';
-//import 'package:flutter_glow/flutter_glow.dart';
-import 'package:mysys/database/app_database.dart';
-import 'package:mysys/pages/addcustomer.dart';
-import 'package:mysys/pages/edit_view_customer.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:mysys/data/myappsettings.dart';
 import '../models/textsection.dart';
+import 'package:mysys/pages/edit_view_product.dart';
 
+class Products extends StatefulWidget {
+  const Products({super.key});
 
-class Customers extends StatefulWidget {
-  const Customers({super.key});
   @override
-  State<Customers> createState() => _CustomersState();
+  State<Products> createState() => _ProductsState();
 }
 
-class _CustomersState extends State<Customers> {
+class _ProductsState extends State<Products> {
 
   TextEditingController searchController = TextEditingController();
-  List<Map<String, dynamic>> allCustomers = [];
-  List<Map<String, dynamic>> filteredCustomers = [];
+  List<Map<String, dynamic>> allProducts = [];
+  List<Map<String, dynamic>> filteredProducts = [];
   bool isSelected = false;
-  String? selectedCustomerId;  
+  String? selectedProductId;  
 
   @override
   void initState() {
     super.initState();
-    searchController.addListener(_filterCustomers);
-    _loadCustomers();
+    searchController.addListener(_filterProducts);
+    _loadProducts();
   }
 
-  Future<void> _loadCustomers() async {
+  Future<void> _loadProducts() async {
     final db = await AppDatabase().database;
-    final customers = await db.query('customers', orderBy: 'is_active DESC, name ASC');
+    final products = await db.query('products', orderBy: 'is_active DESC, name ASC');
     setState(() {
-      allCustomers = customers;
-      filteredCustomers = customers;
+      allProducts = products;
+      filteredProducts = products;
     });
   }
 
-  void _filterCustomers() {
+  void _filterProducts() {
     setState(() {
       if (searchController.text.isEmpty) {
-        filteredCustomers = allCustomers;
+        filteredProducts = allProducts;
       } else {
-        filteredCustomers = allCustomers
-            .where((customer) => customer['name']
+        filteredProducts = allProducts
+            .where((product) => product['name']
                 .toString()
                 .toLowerCase()
                 .contains(searchController.text.toLowerCase()))
@@ -68,8 +60,9 @@ class _CustomersState extends State<Customers> {
     super.dispose();
   }
 
-  Widget _buildCustomerDropdown(BuildContext context, ThemeProvider provider) {
-    final allcolors = Theme.of(context).colorScheme;    
+  Widget _buildProductDropdown(BuildContext context, ThemeProvider provider) {
+    final allcolors = Theme.of(context).colorScheme;
+    
     return Column(
       children: [
         // Search TextField
@@ -82,7 +75,7 @@ class _CustomersState extends State<Customers> {
               fontSize: 14
             ),
             decoration: InputDecoration(
-              hintText: AppLocalizations.of(context)!.searchCustomer,
+              hintText: AppLocalizations.of(context)!.searchProduct,
               hintStyle: TextStyle(color: allcolors.secondaryContainer.withAlpha(150)),
               prefixIcon: Icon(Icons.search, color: allcolors.secondaryContainer),
               border: OutlineInputBorder(
@@ -97,14 +90,14 @@ class _CustomersState extends State<Customers> {
             ),
           ),
         ),
-        // Customer List
+        // Product List
         Expanded(
-          child: filteredCustomers.isEmpty
+          child: filteredProducts.isEmpty
           ? Center(
-            child: Column(              
+            child: Column(                            
               children: [
                 Text(
-                  '${AppLocalizations.of(context)!.noCustomerAdded}! 😞',
+                  '${AppLocalizations.of(context)!.noProductAdded}! 😞',
                   style: TextStyle(
                     color: allcolors.error, 
                     fontSize: 16, 
@@ -130,12 +123,12 @@ class _CustomersState extends State<Customers> {
                     final result = await Navigator.push(
                       context,
                       MaterialPageRoute<bool>(
-                        builder: (context) => const AddCustomer(),
+                        builder: (context) => const AddProductPage(),
                       ),
                     );
                     // Reload products if a new one was added
                     if (result == true) {
-                      _loadCustomers();
+                      _loadProducts();
                     }
                   },
                   child: Row(
@@ -144,7 +137,7 @@ class _CustomersState extends State<Customers> {
                       Icon(Icons.add, color: allcolors.onSecondary),
                       const SizedBox(width: 8), // Space between icon and text
                       TextSection(
-                        description: AppLocalizations.of(context)!.addCustomer,
+                        description: AppLocalizations.of(context)!.addProduct,
                         textFontSize: 16,
                         textColor: allcolors.onSecondary,
                         textFontWeight: FontWeight.w800
@@ -152,14 +145,14 @@ class _CustomersState extends State<Customers> {
                     ],
                   ),
                 ),
-              ]
+              ],
             ),
           )
           : ListView.builder(
-            itemCount: filteredCustomers.length,
+            itemCount: filteredProducts.length,
             itemBuilder: (context, index) {
-              final customer = filteredCustomers[index];
-              isSelected = selectedCustomerId == customer['id'].toString();
+              final product = filteredProducts[index];
+              isSelected = selectedProductId == product['id'].toString();
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                 child: Container(
@@ -178,7 +171,7 @@ class _CustomersState extends State<Customers> {
                   child: ListTile(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                     leading: Icon(
-                      Icons.corporate_fare,
+                      Icons.category,
                       color: isSelected
                       ? allcolors.secondary
                       : allcolors.secondaryContainer,
@@ -188,7 +181,7 @@ class _CustomersState extends State<Customers> {
                       children: [
                         Expanded(
                           child: Text(
-                            customer['name'] ?? 'Unknown',
+                            product['name'] ?? 'Unknown',
                             style: TextStyle(
                               color: allcolors.onPrimaryContainer,
                               fontSize: 18,
@@ -196,7 +189,7 @@ class _CustomersState extends State<Customers> {
                             ),
                           ),
                         ),
-                        if ((customer['is_active'] as int?) == 0)
+                        if ((product['is_active'] as int?) == 0)
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
@@ -215,53 +208,21 @@ class _CustomersState extends State<Customers> {
                           ),
                       ],
                     ),
-                    subtitle: customer['phone'] != null && customer['phone'].toString().trim().isNotEmpty
+                    subtitle: product['cost_price'] != null && product['cost_price'].toString().trim().isNotEmpty
                     ? InkWell(
                       onTap: () async {
-                        final phoneNumber = customer['phone'];
-                        final uri = Uri(scheme: 'tel', path: phoneNumber);
-                        try {
-                          final canLaunch = await canLaunchUrl(uri);
-                          if (canLaunch) {
-                            await launchUrl(uri);
-                            } else {
-                              // On iPad or devices without phone capability
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      '${AppLocalizations.of(context)!.phone}: $phoneNumber',
-                                    ),
-                                    action: SnackBarAction(
-                                      label: AppLocalizations.of(context)!.copy,
-                                      onPressed: () {
-                                        // Copy to clipboard if needed
-                                      },
-                                    ),
-                                  ),
-                                );
-                              }
-                            }
-                          } catch (e) {
-                            if (context.mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text('${AppLocalizations.of(context)!.phone}: $phoneNumber'),
-                                ),
-                              );
-                            }
-                          }
+                        // Implement edit product price functionality here
                         },
                         child: Row(
                           children: [
                             Icon(
-                              Icons.phone,
+                              Icons.attach_money,
                               size: 18,
                               color: allcolors.secondaryContainer.withAlpha(150),
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              customer['phone'],
+                              product['cost_price'].toString(),
                               style: TextStyle(
                               color: allcolors.secondaryContainer.withAlpha(150),
                               fontSize: 16,
@@ -271,7 +232,7 @@ class _CustomersState extends State<Customers> {
                       ),
                     )
                     :Text(
-                      '${AppLocalizations.of(context)!.noPhoneFound}! 😞 ${AppLocalizations.of(context)!.tapToEdit}',
+                      '${AppLocalizations.of(context)!.noCostPriceFound}! 😞 ${AppLocalizations.of(context)!.tapToEdit}',
                       style: TextStyle(
                         color: allcolors.error, 
                         fontSize: 14, 
@@ -289,47 +250,20 @@ class _CustomersState extends State<Customers> {
                     : null,
                     onTap: () async {
                       setState(() {
-                        selectedCustomerId = customer['id'].toString();
+                        selectedProductId = product['id'].toString();
                       });
                       final result = await Navigator.push(
                         context,
                         MaterialPageRoute<bool>(
                           builder: 
-                          (context) => EditViewCustomer(customerId: customer['id'] as int),
+                          (context) => EditViewProduct(productId: product['id'] as int),
+                          //(context) => AddProductPage(),
                         ),
                       );
                       if (result == true) {
-                        await _loadCustomers();
+                        await _loadProducts();
                       }
-                    },
-                    /*onLongPress: () {
-                      setState(() {
-                        selectedCustomerId = customer['id'].toString();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                customer['name'],
-                              ),
-                              action: SnackBarAction(
-                                label: AppLocalizations.of(context)!.edit,
-                                onPressed: () async {
-                                  final result = await Navigator.push(
-                                    context,
-                                    MaterialPageRoute<bool>(
-                                      builder: (context) => const EditViewCustomer(),
-                                    ),
-                                  );
-                                  if (result == true) {
-                                    _loadCustomers();
-                                  }
-                                },
-                              ),
-                            ),
-                          );
-                        }
-                      });                      
-                    },*/
+                    },                    
                   ),
                 ),
               );
@@ -344,7 +278,7 @@ class _CustomersState extends State<Customers> {
   Widget build(BuildContext context) {
     final allcolors = Theme.of(context).colorScheme;
     final tProvider=context.read<ThemeProvider>();   
-    themeProviderGlobal = tProvider;    
+    themeProviderGlobal = tProvider;   
     return Scaffold(
       appBar: AppBar(        
         backgroundColor: allcolors.primary,
@@ -362,23 +296,23 @@ class _CustomersState extends State<Customers> {
         ),
         title: Text(
           //AppLocalizations.of(context)!.newOrder+"S:${Localizations.localeOf(context).toString()}C:${Localizations.localeOf(context).countryCode}L:${Localizations.localeOf(context).languageCode}",
-          AppLocalizations.of(context)!.customers,
+          AppLocalizations.of(context)!.products,
           style: TextStyle(fontWeight: FontWeight.bold,color: allcolors.onPrimary),
         ),
         actions: [          
           IconButton(
-            icon: Icon(Icons.group_add),
+            icon: Icon(Icons.add),
             color: allcolors.onPrimary,
             onPressed: () async {
               final result = await Navigator.push(
                 context,
                 MaterialPageRoute<bool>(
-                  builder: (context) => const AddCustomer(),
+                  builder: (context) => const AddProductPage(),
                 ),
               );
-              // Reload customers if a new one was added
+              // Reload products if a new one was added
               if (result == true) {
-                _loadCustomers();
+                _loadProducts();
               }
             },
           ),
@@ -398,7 +332,7 @@ class _CustomersState extends State<Customers> {
       ),
       body: Container(
         color:allcolors.primary,
-        child: _buildCustomerDropdown(context,tProvider)
+        child: _buildProductDropdown(context,tProvider)
       ),
     );
   }

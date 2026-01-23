@@ -149,6 +149,12 @@ abstract class AppLocalizations {
   /// **'Customer'**
   String get customer;
 
+  /// No description provided for @viewEditCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Data & Update'**
+  String get viewEditCustomer;
+
   /// No description provided for @addCustomer.
   ///
   /// In en, this message translates to:
@@ -160,6 +166,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Save Customer'**
   String get saveCustomer;
+
+  /// No description provided for @updateCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Customer'**
+  String get updateCustomer;
 
   /// No description provided for @searchCustomer.
   ///
@@ -179,11 +191,23 @@ abstract class AppLocalizations {
   /// **'Customer Name'**
   String get customerName;
 
+  /// No description provided for @customerName2.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Foreign Name'**
+  String get customerName2;
+
   /// No description provided for @customerCode.
   ///
   /// In en, this message translates to:
   /// **'Customer Code'**
   String get customerCode;
+
+  /// No description provided for @customerLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Location'**
+  String get customerLocation;
 
   /// No description provided for @phone.
   ///
@@ -203,6 +227,12 @@ abstract class AppLocalizations {
   /// **'Tax Number'**
   String get taxNumber;
 
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
+
   /// No description provided for @financial.
   ///
   /// In en, this message translates to:
@@ -221,6 +251,12 @@ abstract class AppLocalizations {
   /// **'Active'**
   String get active;
 
+  /// No description provided for @inactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get inactive;
+
   /// No description provided for @address.
   ///
   /// In en, this message translates to:
@@ -238,6 +274,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'City'**
   String get city;
+
+  /// No description provided for @state.
+  ///
+  /// In en, this message translates to:
+  /// **'State'**
+  String get state;
 
   /// No description provided for @country.
   ///
@@ -263,11 +305,47 @@ abstract class AppLocalizations {
   /// **'No Customers Found'**
   String get noCustomersFound;
 
+  /// No description provided for @noCustomerAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'No Customer Added Yet'**
+  String get noCustomerAdded;
+
+  /// No description provided for @noPhoneFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Phone Numbers Found'**
+  String get noPhoneFound;
+
   /// No description provided for @custSavedMsg.
   ///
   /// In en, this message translates to:
   /// **'Customer Saved Successfully'**
   String get custSavedMsg;
+
+  /// No description provided for @copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copy;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @tapToEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap here to Edit'**
+  String get tapToEdit;
+
+  /// No description provided for @mapAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'The address using free maps'**
+  String get mapAddress;
 
   /// No description provided for @qoutation.
   ///
@@ -310,6 +388,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Synchronization'**
   String get synchronization;
+
+  /// No description provided for @products.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get products;
+
+  /// No description provided for @nodbtables.
+  ///
+  /// In en, this message translates to:
+  /// **'No Tables in Database'**
+  String get nodbtables;
 
   /// No description provided for @qrReadingText.
   ///
@@ -472,6 +562,228 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select a Table'**
   String get selectTable;
+
+  /// No description provided for @mainwarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Warehouse'**
+  String get mainwarehouse;
+
+  /// No description provided for @mainwarehouselocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Location'**
+  String get mainwarehouselocation;
+
+  /// No description provided for @addProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Product'**
+  String get addProduct;
+
+  /// No description provided for @viewEditProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'View & Edit Product'**
+  String get viewEditProduct;
+
+  /// No description provided for @productName.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Name'**
+  String get productName;
+
+  /// No description provided for @productName2.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Foreign Name'**
+  String get productName2;
+
+  /// No description provided for @sku.
+  ///
+  /// In en, this message translates to:
+  /// **'SKU'**
+  String get sku;
+
+  /// No description provided for @costPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Cost Price (0.00)'**
+  String get costPrice;
+
+  /// No description provided for @sellingPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Selling Price (0.00)'**
+  String get sellingPrice;
+
+  /// No description provided for @productVat.
+  ///
+  /// In en, this message translates to:
+  /// **'Product VAT (%)'**
+  String get productVat;
+
+  /// No description provided for @totalWithTaxPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Total with Tax (%)'**
+  String get totalWithTaxPrice;
+
+  /// No description provided for @warehouses.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouses'**
+  String get warehouses;
+
+  /// No description provided for @selectWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Warehouse'**
+  String get selectWarehouse;
+
+  /// No description provided for @options.
+  ///
+  /// In en, this message translates to:
+  /// **'Options'**
+  String get options;
+
+  /// No description provided for @hasVariants.
+  ///
+  /// In en, this message translates to:
+  /// **'Has Variants'**
+  String get hasVariants;
+
+  /// No description provided for @variants.
+  ///
+  /// In en, this message translates to:
+  /// **'Variants'**
+  String get variants;
+
+  /// No description provided for @addVariant.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Variant'**
+  String get addVariant;
+
+  /// No description provided for @variantName.
+  ///
+  /// In en, this message translates to:
+  /// **'Variant Name'**
+  String get variantName;
+
+  /// No description provided for @variantValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Variant Value'**
+  String get variantValue;
+
+  /// No description provided for @remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// No description provided for @productSavedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Saved Successfully'**
+  String get productSavedMsg;
+
+  /// No description provided for @saveProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Product'**
+  String get saveProduct;
+
+  /// No description provided for @updateProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Product'**
+  String get updateProduct;
+
+  /// No description provided for @warehouseSavedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse Saved Successfully'**
+  String get warehouseSavedMsg;
+
+  /// No description provided for @addWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Warehouse'**
+  String get addWarehouse;
+
+  /// No description provided for @saveWarehouse.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Warehouse'**
+  String get saveWarehouse;
+
+  /// No description provided for @warehouseName.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse Name'**
+  String get warehouseName;
+
+  /// No description provided for @warehouseLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse Location'**
+  String get warehouseLocation;
+
+  /// No description provided for @warehouseInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Warehouse Information'**
+  String get warehouseInfo;
+
+  /// No description provided for @inventory.
+  ///
+  /// In en, this message translates to:
+  /// **'Inventory'**
+  String get inventory;
+
+  /// No description provided for @openingStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Opening Stock (>=0)'**
+  String get openingStock;
+
+  /// No description provided for @searchProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Search Product...'**
+  String get searchProduct;
+
+  /// No description provided for @noProductsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Products Found'**
+  String get noProductsFound;
+
+  /// No description provided for @noProductAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'No Product Added Yet'**
+  String get noProductAdded;
+
+  /// No description provided for @noCostPriceFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Cost Price Found'**
+  String get noCostPriceFound;
+
+  /// No description provided for @barcodeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode'**
+  String get barcodeText;
+
+  /// No description provided for @barcodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan Product Barcode'**
+  String get barcodeTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

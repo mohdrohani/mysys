@@ -550,7 +550,7 @@ class _MysettingsState extends State<Mysettings> {
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Text('No tables found');
+          return Text(AppLocalizations.of(context)!.nodbtables);
         } else {
           final tables = snapshot.data!;
           String? selectedTable; // track selected table

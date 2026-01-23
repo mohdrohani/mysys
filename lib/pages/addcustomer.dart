@@ -6,6 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:mysys/database/app_database.dart';
 import '../models/textsection.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/services.dart';
+import '../data/mygeolocator.dart';
+import 'package:geocoding/geocoding.dart';
+
 
 class AddCustomer extends StatefulWidget  {
   const AddCustomer({super.key});
@@ -15,27 +19,38 @@ class AddCustomer extends StatefulWidget  {
 
 class _AddCustomerState extends State<AddCustomer> {
   final _formKey = GlobalKey<FormState>();
+  double? latitude;
+  double? longitude;
+  bool _name2ManuallyEdited = false;
 
   // Customer
-  final codeCtrl = TextEditingController();
+  final name2Ctrl = TextEditingController();
   final nameCtrl = TextEditingController();
   final phoneCtrl = TextEditingController();
   final emailCtrl = TextEditingController();
   final taxCtrl = TextEditingController();
+  //final mapCtrl = TextEditingController();
   final creditCtrl = TextEditingController();
   final notesCtrl = TextEditingController();
 
   // Address
   final addressCtrl = TextEditingController();
   final cityCtrl = TextEditingController();
+  final stateCtrl = TextEditingController();
   final countryCtrl = TextEditingController();
 
    // Contact
   final contactNameCtrl = TextEditingController();
   final contactPhoneCtrl = TextEditingController();
-  final contactEmailCtrl = TextEditingController();
-
+  final contactEmailCtrl = TextEditingController(); 
+  
   bool isActive = true;
+
+  @override
+  void initState() {
+    super.initState();    
+    getAddress();    
+  }  
 
   void _showMsg(String msg, ColorScheme allcolors)
   {
@@ -51,7 +66,7 @@ class _AddCustomerState extends State<AddCustomer> {
 
   Widget _sectionTitle(String title, ColorScheme colors) {    
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Text(
         title,
         style: TextStyle(
@@ -70,14 +85,15 @@ class _AddCustomerState extends State<AddCustomer> {
     final now = DateTime.now().toIso8601String();
     
     await db.transaction((txn) async {
-      final customerId = await txn.insert('customers', {
-        'customer_code': codeCtrl.text,
+      final customerId = await txn.insert('customers', {        
         'name': nameCtrl.text,
+        'name2': name2Ctrl.text.isEmpty ? nameCtrl.text : name2Ctrl.text,
         'phone': phoneCtrl.text,
         'email': emailCtrl.text,
         'tax_number': taxCtrl.text,
         'credit_limit': double.tryParse(creditCtrl.text) ?? 0,
         'is_active': isActive ? 1 : 0,
+        'notes': notesCtrl.text,        
         'created_at': now,
         'updated_at': now,
       });
@@ -87,7 +103,10 @@ class _AddCustomerState extends State<AddCustomer> {
           'customer_id': customerId,
           'address_line': addressCtrl.text,
           'city': cityCtrl.text,
+          'state': stateCtrl.text,
           'country': countryCtrl.text,
+          'latitude': latitude,
+          'longitude': longitude,
           'is_default': 1,
         });
       }
@@ -110,7 +129,8 @@ class _AddCustomerState extends State<AddCustomer> {
     ColorScheme colors,
     String label, {
       bool required = false,
-      TextInputType keyboard = TextInputType.text,      
+      TextInputType keyboard = TextInputType.text,
+      List<TextInputFormatter>? inputFormatters,
     }
   ){
     return Padding(
@@ -125,55 +145,97 @@ class _AddCustomerState extends State<AddCustomer> {
           style: TextStyle(
             color: colors.onPrimaryContainer,
             fontSize: 14,
-          ),          
+          ),
           controller: controller,
-        keyboardType: keyboard,
-        validator: required
+          keyboardType: keyboard,
+          inputFormatters: inputFormatters,
+          validator: required
           ? (v) => v == null || v.isEmpty ? 'Required' : null
           : null,
-        decoration: InputDecoration(
-          labelText: label,                    
-          labelStyle: TextStyle(
-            fontSize: 14,
-            color: colors.primaryContainer,
-          ),
-          floatingLabelStyle: TextStyle(
-            fontSize: 14,
-            color: colors.onPrimaryContainer,
-            fontWeight: FontWeight.bold,
-          ),
-          hintStyle: TextStyle(
-            fontSize: 13,
-            color: colors.tertiary.withAlpha(150),
-          ),
-          errorStyle: TextStyle(
-            fontSize: 12,
-            color: colors.error,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color:colors.primaryContainer, width: 1),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color:colors.primaryContainer.withAlpha(150), width: 3),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: colors.error,width: 1),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color: colors.error.withAlpha(150), width: 3),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(color:colors.primaryContainer.withAlpha(50)),
+          decoration: InputDecoration(
+            labelText: label,                    
+            labelStyle: TextStyle(
+              fontSize: 14,
+              color: colors.primaryContainer,
+            ),
+            floatingLabelStyle: TextStyle(
+              fontSize: 14,
+              color: colors.onPrimaryContainer,
+              fontWeight: FontWeight.bold,
+            ),
+            hintStyle: TextStyle(
+              fontSize: 13,
+              color: colors.tertiary.withAlpha(150),
+            ),
+            errorStyle: TextStyle(
+              fontSize: 12,
+              color: colors.error,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color:colors.primaryContainer, width: 1),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color:colors.primaryContainer.withAlpha(150), width: 3),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: colors.error,width: 1),
+            ),
+            focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: colors.error.withAlpha(150), width: 3),
+            ),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color:colors.primaryContainer.withAlpha(50)),
+            ),
           ),
         ),
       ),
-        ),
     );
+  }
+  
+  Future<void> getAddress() async {
+    final pos = await getCurrentLocation();
+    latitude=pos.latitude;
+    longitude=pos.longitude;
+    final placemarks =
+    await placemarkFromCoordinates(pos.latitude, pos.longitude);
+    final place = placemarks.first;     
+    setState(() {  
+      String addr='';    
+      if(place.street!=null && place.street!.isNotEmpty)
+      {
+        addr='${place.street}';
+      }    
+      if(place.postalCode!=null && place.postalCode!.isNotEmpty)
+      {
+        addr+=', ${place.postalCode}';
+      }
+      if(place.thoroughfare!=null && place.thoroughfare!.isNotEmpty)
+      {
+        addr+=', ${place.thoroughfare}';
+      }
+      if(place.subThoroughfare!=null && place.subThoroughfare!.isNotEmpty)
+      {
+        addr+=', ${place.subThoroughfare}';
+      }
+      if(place.name!=null && place.name!.isNotEmpty)
+      {
+        addr+=', ${place.name}';
+      }
+      if(place.subLocality!=null && place.subLocality!.isNotEmpty)
+      {
+        addr+=', ${place.subLocality}';
+      }
+      addressCtrl.text=addr;
+      cityCtrl.text='${place.locality}';
+      stateCtrl.text='${place.administrativeArea}';
+      countryCtrl.text='${place.country}';      
+      print(addressCtrl.text+","+cityCtrl.text+","+stateCtrl.text+","+countryCtrl.text);
+    });    
   }
 
   @override
@@ -181,6 +243,7 @@ class _AddCustomerState extends State<AddCustomer> {
     final allcolors = Theme.of(context).colorScheme; 
     final tProvider=context.read<ThemeProvider>();   
     themeProviderGlobal = tProvider;     
+    //getAddress();    
     return Scaffold(
       appBar: AppBar(
         backgroundColor: allcolors.primary,
@@ -229,17 +292,36 @@ class _AddCustomerState extends State<AddCustomer> {
                 padding: const EdgeInsets.all(16),
                 children: [
                 _sectionTitle(AppLocalizations.of(context)!.basicInfo,allcolors),
-                _input(nameCtrl,allcolors, AppLocalizations.of(context)!.customerName, required: true),
-                _input(codeCtrl, allcolors, AppLocalizations.of(context)!.customerCode),
-                _input(phoneCtrl, allcolors, AppLocalizations.of(context)!.phone),
-                _input(emailCtrl, allcolors, AppLocalizations.of(context)!.email),
-                _input(taxCtrl, allcolors, AppLocalizations.of(context)!.taxNumber),
+                _input(nameCtrl,allcolors, AppLocalizations.of(context)!.customerName, required: true, keyboard: TextInputType.name),
+                _input(name2Ctrl, allcolors, AppLocalizations.of(context)!.customerName2, keyboard: TextInputType.name),
+                _input(
+                  phoneCtrl, 
+                  allcolors, 
+                  AppLocalizations.of(context)!.phone, 
+                  keyboard: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                ),
+                _input(emailCtrl, allcolors, AppLocalizations.of(context)!.email, keyboard: TextInputType.emailAddress),
+                _input(taxCtrl, allcolors, AppLocalizations.of(context)!.taxNumber, keyboard: TextInputType.text),
+                _input(notesCtrl, allcolors, AppLocalizations.of(context)!.notes),
                 
                 _sectionTitle(AppLocalizations.of(context)!.financial,allcolors),
-                _input(creditCtrl, allcolors, AppLocalizations.of(context)!.creditLimit, keyboard: TextInputType.number),
+                _input(
+                  creditCtrl, 
+                  allcolors, 
+                  AppLocalizations.of(context)!.creditLimit, 
+                  keyboard: TextInputType.number,
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                ),
+
+                //_input(mapCtrl, allcolors, AppLocalizations.of(context)!.mapAddress),
                 
                 SwitchListTile(
-                  title: _sectionTitle(AppLocalizations.of(context)!.active,allcolors),
+                  title: isActive ? _sectionTitle(AppLocalizations.of(context)!.active,allcolors) : _sectionTitle(AppLocalizations.of(context)!.inactive,allcolors),
                   value: isActive,
                   onChanged: (v) => setState(() => isActive = v),
                   contentPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
@@ -262,19 +344,10 @@ class _AddCustomerState extends State<AddCustomer> {
                   title: _sectionTitle(AppLocalizations.of(context)!.address,allcolors),
                   iconColor: allcolors.primaryContainer,
                   collapsedIconColor: allcolors.onPrimary,
-                  //backgroundColor: allcolors.primaryContainer.withAlpha(30),
-                  //collapsedBackgroundColor: allcolors.primary,
-                  /*shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: allcolors.primaryContainer, width: 0),
-                  ),
-                  collapsedShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: allcolors.primaryContainer, width: 1),
-                  ),*/
                   children: [
                     _input(addressCtrl, allcolors, AppLocalizations.of(context)!.addressStreet, keyboard: TextInputType.streetAddress),
                     _input(cityCtrl, allcolors, AppLocalizations.of(context)!.city),
+                    _input(stateCtrl, allcolors, AppLocalizations.of(context)!.state),
                     _input(countryCtrl, allcolors, AppLocalizations.of(context)!.country),
                   ],
                 ),
@@ -283,20 +356,10 @@ class _AddCustomerState extends State<AddCustomer> {
                   title: _sectionTitle(AppLocalizations.of(context)!.contactName,allcolors),
                   iconColor: allcolors.primaryContainer,
                   collapsedIconColor: allcolors.onPrimary,
-                  //backgroundColor: allcolors.primaryContainer.withAlpha(30),
-                  //collapsedBackgroundColor: allcolors.primary,
-                  /*shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: allcolors.primaryContainer, width: 0),
-                  ),
-                  collapsedShape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    side: BorderSide(color: allcolors.primaryContainer, width: 1),
-                  ),*/
                   children: [
-                    _input(contactNameCtrl,allcolors, AppLocalizations.of(context)!.contactPerson),
-                    _input(contactPhoneCtrl, allcolors, AppLocalizations.of(context)!.phone),
-                    _input(contactEmailCtrl, allcolors, AppLocalizations.of(context)!.email),
+                    _input(contactNameCtrl,allcolors, AppLocalizations.of(context)!.contactPerson, keyboard: TextInputType.name),
+                    _input(contactPhoneCtrl, allcolors, AppLocalizations.of(context)!.phone, keyboard: TextInputType.phone),
+                    _input(contactEmailCtrl, allcolors, AppLocalizations.of(context)!.email, keyboard: TextInputType.emailAddress),
                   ],
                 ),
                 

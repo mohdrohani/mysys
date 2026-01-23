@@ -3,7 +3,7 @@ import 'package:window_manager/window_manager.dart';
 import 'package:flutter/foundation.dart'; // kIsWeb
 import 'package:mysys/l10n/app_localizations.dart';
 //import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:mysys/theme/theme_provider.dart';
 import 'package:mysys/responsive/mobile_scaffold.dart';
@@ -15,7 +15,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mysys/data/app_lifecycle_observer.dart';
 import 'package:mysys/database/app_database.dart';
 
-//import 'package:fluttertoast/fluttertoast.dart';
 
 //int selectedPageGlobal=0;
 //ValueNotifier<Locale> localeNotifier = ValueNotifier(const Locale('en'));
@@ -44,14 +43,15 @@ void main() async  {
       await windowManager.focus();
     });
 
-    await AppDatabase().database;
+    await AppDatabase().database;   
+    //await AppDatabase().insertLocalizedWarehouses("Main Warehouse", "Main Location");
   }
   runApp(
     ChangeNotifierProvider(
       create: (_) =>  localeProvider,
       child: const MyApp(),
     ),
-  );
+  );  
 }
 
 class MyApp extends StatefulWidget {
@@ -62,8 +62,23 @@ class MyApp extends StatefulWidget {
 }
   
 class _MyAppState extends State<MyApp> {
-  late AppLocaleObserver _observer;
+  @override
+  void initState() {
+    super.initState();
+    //_initializeWarehouses();    
+  }
+  late AppLocaleObserver _observer;  
 
+  /*Future<void> _initializeWarehouses() async {
+    // Get localized strings here
+    //final warehouseName = AppLocalizations.of(context)!.mainwarehouse;
+    //final location = AppLocalizations.of(context)!.mainwarehouselocation;
+    final warehouseName = "Main Warehouse";
+    final location = "Main Location";
+    
+    // Pass them to database method
+    await AppDatabase().insertLocalizedWarehouses(warehouseName, location);
+  }*/
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();

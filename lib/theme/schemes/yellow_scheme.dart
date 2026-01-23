@@ -16,7 +16,7 @@ class YellowScheme {
       onTertiary: Color(0xffffffff),
       tertiaryContainer: Color(0xffc5ecce),
       onTertiaryContainer: Color(0xff2c4e38),
-      error: Color(0xffba1a1a),
+      error: Color.fromARGB(255, 245, 151, 141),
       onError: Color(0xffffffff),
       errorContainer: Color(0xffffdad6),
       onErrorContainer: Color(0xff93000a),

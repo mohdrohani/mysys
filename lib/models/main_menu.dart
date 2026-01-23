@@ -47,12 +47,12 @@ List<Map<String, dynamic>> myItems = const [
   {'image': Icons.plus_one},
   {'image': Icons.calendar_today},        
   {'image':Icons.badge},
-  {'image': Icons.group},
-  {'image': Icons.keyboard_return},
-  {'image': Icons.monetization_on},
-  {'image': Icons.qr_code},
-  {'image': Icons.home},
-  {'image': Icons.sync},
+  {'image': Icons.people},
+  {'image': Icons.reply},
+  {'image': Icons.point_of_sale},
+  {'image': Icons.receipt},
+  {'image': Icons.warehouse},
+  {'image': Icons.list_alt},
   {'image': Icons.settings},    
 ];
 

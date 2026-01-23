@@ -9,7 +9,7 @@ import 'package:mysys/pages/mysafe.dart';
 import 'package:mysys/pages/invoices.dart';
 import 'package:mysys/pages/warehouse.dart';
 import 'package:mysys/pages/neworder.dart';
-import 'package:mysys/pages/synchronize.dart';
+import 'package:mysys/pages/products.dart';
 import 'package:mysys/pages/mysettings.dart';
 import 'package:mysys/data/myappsettings.dart';
 import 'package:window_manager/window_manager.dart';
@@ -65,7 +65,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                   if (page == 5) return const Center(child: Mysafe());
                   if (page == 6) return const Center(child: Invoices());
                   if (page == 7) return const Center(child: Warehouse());
-                  if (page == 8) return const Center(child: Synchronize());
+                  if (page == 8) return const Center(child: Products());
                   if (page == 9) return const Center(child: Mysettings());                  
                   return const SizedBox.shrink();
                 }),

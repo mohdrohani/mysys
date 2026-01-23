@@ -7,7 +7,7 @@ import 'package:mysys/pages/mysafe.dart';
 import 'package:mysys/pages/invoices.dart';
 import 'package:mysys/pages/warehouse.dart';
 import 'package:mysys/pages/neworder.dart';
-import 'package:mysys/pages/synchronize.dart';
+import 'package:mysys/pages/products.dart';
 import 'package:mysys/pages/mysettings.dart';
 import 'package:mysys/models/main_menu.dart';
 import 'package:mysys/data/myappsettings.dart';
@@ -41,7 +41,7 @@ class _MobileScaffoldState extends State<MobileScaffold> {
       {'name': t.casheir},
       {'name': t.invoices},
       {'name': t.warehouse},
-      {'name': t.synchronization},
+      {'name': t.products},
       {'name': t.settings},    
     ];
     
@@ -175,7 +175,7 @@ class _MobileScaffoldState extends State<MobileScaffold> {
                   Navigator.push(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (context) => const Synchronize(),
+                      builder: (context) => const Products(),
                     ),
                   );
                 }
@@ -200,5 +200,5 @@ class _MobileScaffoldState extends State<MobileScaffold> {
       ),
     ),
   );
-}
+  }
 }
